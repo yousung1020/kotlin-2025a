@@ -33,14 +33,37 @@ class MainActivity : ComponentActivity() {
 }
 
 private fun week02Variables(){
-    println("Week 02: Variables")
+//    println("Week 02: Variables")
+//
+//    val courseName = "Moblie Programming"
+//    // courseName = "skrr"
+//    var week = 2
+//    week = 3
+//    println("Course: $courseName")
+//    println("Week: $week")
 
-    val courseName = "Moblie Programming"
-    // courseName = "skrr"
-    var week = 2
-    week = 3
-    println("Course: $courseName")
-    println("Week: $week")
+    println("== Kotlin Variables ==")
+
+    // val(immutable 불변), var(mutable 가변)
+    val name = "Android"
+    var version = 8
+
+    println("Hello $name $version")
+
+    // 타입 명시
+    val age: Int = 23
+    val height: Double = 178.0
+    val isStudent: Boolean = true
+
+    println("Age: $age, Height: $height, student: $isStudent")
+
+    // null 비허용 -> 컴파일 시점에서 예외 발생
+    // var nickname: String = null
+
+    // null 허용
+    var nickname: String? = null
+    nickname = "mirae"
+    println("nickname: $nickname ${nickname?.length}")
 }
 
 @Composable
