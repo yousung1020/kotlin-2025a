@@ -93,23 +93,44 @@ private fun week03Classes() {
     person1.Introduce();
     person1.birthDay()
 
-    class Animal(var species: String){
+    // open: final을 해제하여 부모로써 자식에게 상속 가능
+    open class Animal(var species: String){
         var weight: Double = 0.0
+
+        init{
+            Log.d("KotlinWeek03", "$species 종이 생성되었습니다!")
+        }
 
         constructor(species: String, weight: Double): this(species){
             this.weight = weight
             Log.d("KotlinWeek03", "$species 의 무게는 $weight kg 입니다")
         }
 
-        fun makeSound(){
+        open fun makeSound(){
             Log.d("KotlinWeek03", "$species 가 소리를 냅니다")
         }
     }
 
-    var puppy = Animal("웰시코기", 10.5)
-
+    var puppy = Animal("강아지", 10.5)
     puppy.makeSound()
 
+    class Dog(species: String, weight: Double, val breed: String): Animal(species, weight){
+        override fun makeSound(){
+            Log.d("KotlinWeek03", "$breed($species)가 멍멍 짖습니다!")
+        }
+    }
+
+    val dog = Dog("개", 12.5, "파피용")
+    dog.makeSound()
+
+    // data 클래스의 특징:
+    data class Book(val title: String, val author: String, val pages: Int)
+
+    val book1 = Book("코틀린 입문", "Choi", 400)
+    val book2 = Book("코틀린 입문", "Choi", 400)
+
+    Log.d("KotlinWeek03", "book1 == book2: ${book1 == book2}")
+    Log.d("KotlinWeek03", "book1: ${book1}")
 //    class Student{
 //        var name: String = ""
 //        var age: Int = 0
