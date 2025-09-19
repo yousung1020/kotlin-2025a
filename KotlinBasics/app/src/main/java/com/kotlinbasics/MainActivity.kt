@@ -1,6 +1,7 @@
 package com.kotlinbasics
 
 import android.os.Bundle
+import android.util.Log
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
@@ -31,8 +32,8 @@ class MainActivity : ComponentActivity() {
 //        week02Variables()
 //        week02Functions()
 
-//        week03Classes()
-        week03Collections()
+        week03Classes()
+//        week03Collections()
     }
 }
 
@@ -65,34 +66,71 @@ private fun week03Collections(){
     }
 
     // map의 컬렉션 내부에 forEach 사용가능, 주의사항으로는 소괄호가 아닌 중괄호로 사용해야 함
+    // 람다 형식으로 사용
     // 첫번째 인수에 key, 두번째 인수에 value
     scores.forEach{(name, score) -> println("$name scored $score")}
 }
 
 private fun week03Classes() {
-    println("== Kotlin Classes ==")
+//    println("== Kotlin Classes ==")
+    Log.d("KotlinWeek03", "== Kotlin Classes ==")
 
-    class Student{
-        var name: String = ""
-        var age: Int = 0
+    class Person(val name: String, var age: Int){
+        fun Introduce(){
+            Log.d("KotlinWeek03", "안녕하세요, $name ($age)세 입니다")
+        }
 
-        fun introduce(){
-            println("Hi, I'm $name and I'm $age years old")
+        fun birthDay(){
+            // 후위 연산자 사용 가능
+            age++
+
+            Log.d("KotlinWeek03", "$name 님의 생일! 이제 $age 세")
         }
     }
 
-    val student = Student()
-    student.name = "Choi"
-    student.age = 23
-    student.introduce()
+    val person1 = Person("최유성", 27)
 
-    data class Person(val name: String, val age: Int)
+    person1.Introduce();
+    person1.birthDay()
 
-    val person1 = Person("Kim", 23)
-    val person2 = Person("Kim", 23)
+    class Animal(var species: String){
+        var weight: Double = 0.0
 
-    println("Person1: $person1")
-    println("Equal? ${person1 == person2}")
+        constructor(species: String, weight: Double): this(species){
+            this.weight = weight
+            Log.d("KotlinWeek03", "$species 의 무게는 $weight kg 입니다")
+        }
+
+        fun makeSound(){
+            Log.d("KotlinWeek03", "$species 가 소리를 냅니다")
+        }
+    }
+
+    var puppy = Animal("웰시코기", 10.5)
+
+    puppy.makeSound()
+
+//    class Student{
+//        var name: String = ""
+//        var age: Int = 0
+//
+//        fun introduce(){
+//            println("Hi, I'm $name and I'm $age years old")
+//        }
+//    }
+//
+//    val student = Student()
+//    student.name = "Choi"
+//    student.age = 23
+//    student.introduce()
+//
+//    data class Person(val name: String, val age: Int)
+//
+//    val person1 = Person("Kim", 23)
+//    val person2 = Person("Kim", 23)
+//
+//    println("Person1: $person1")
+//    println("Equal? ${person1 == person2}")
 }
 
 private fun week02Functions(){
