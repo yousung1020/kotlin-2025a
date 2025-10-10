@@ -15,17 +15,25 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         val buttonGreet = findViewById<Button>(R.id.buttonGreet)
+
         val buttonColor = findViewById<Button>(R.id.buttonColor)
 
-        buttonGreet.setOnClickListener {
-            startActivity(Intent(this, GreetingActivity::class.java))
-        }
+        val buttonCounter = findViewById<Button>(R.id.buttonCounter)
 
         buttonColor.setOnClickListener {
                 startActivity(Intent(this, ColorActivity::class.java))
             }
 
-        // @+id 에 있는 변수를 가져옴
+        buttonGreet.setOnClickListener{
+            startActivity(Intent(this, GreetingActivity::class.java))
+        }
+
+        buttonCounter.setOnClickListener{
+            startActivity(Intent(this, CounterActivity::class.java))
+        }
+    }
+
+    // @+id 에 있는 변수를 가져옴
 //        val editTextName = findViewById<EditText>(R.id.editTextName)
 //        val buttonGreet = findViewById<Button>(R.id.buttonGreet)
 //        val textViewGreeting = findViewById<TextView>(R.id.textViewGreeting)
@@ -45,5 +53,4 @@ class MainActivity : AppCompatActivity() {
 //            textViewGreeting.visibility = View.VISIBLE
 //            Log.d("KotlinWeek04App", greeting)
 //        }
-    }
 }
