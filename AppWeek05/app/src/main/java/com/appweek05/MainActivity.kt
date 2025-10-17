@@ -8,18 +8,7 @@ import android.widget.EditText
 import android.widget.ListView
 import android.widget.TextView
 import android.widget.Toast
-import androidx.activity.ComponentActivity
-import androidx.activity.compose.setContent
-import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.padding
-import androidx.compose.material3.Scaffold
-import androidx.compose.material3.Text
-import androidx.compose.runtime.Composable
-import androidx.compose.ui.Modifier
-import androidx.compose.ui.tooling.preview.Preview
-import com.appweek05.ui.theme.AppWeek05Theme
 
 class MainActivity : AppCompatActivity() {
     // UI component
@@ -141,7 +130,7 @@ class MainActivity : AppCompatActivity() {
 
         Toast.makeText(this, "Cleared all ${count} students", Toast.LENGTH_SHORT).show()
 
-        Log.d(TAG, "Cleared all students (Total cleared: ${count}")
+        Log.d(TAG, "Cleared all students (Total cleared: ${count})")
     }
 
     private fun removeStudent(position: Int){
