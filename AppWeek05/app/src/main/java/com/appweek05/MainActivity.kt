@@ -86,11 +86,11 @@ class MainActivity : AppCompatActivity() {
             val studentName = studentList[position]
             Toast.makeText(
                 this,
-                "Selected ${studentName} (Position: ${position + 1})",
+                "Selected $studentName (Position: ${position + 1})",
                 Toast.LENGTH_SHORT // 토스트(팝업) 창이 빠르게 사라지게끔
             ).show()
 
-            Log.d(TAG, "Selected ${studentName} (Position: ${position + 1})")
+            Log.d(TAG, "Selected $studentName (Position: ${position + 1})")
         }
 
         Log.d(TAG, "Event listener setup completed")
@@ -120,7 +120,7 @@ class MainActivity : AppCompatActivity() {
         adapter.notifyDataSetChanged()
         editTextStudent.text.clear()
 
-        // updateStudentCount()
+        updateStudentCount()
 
         Toast.makeText(this, "Added: ${studentName}", Toast.LENGTH_SHORT).show()
         Log.d(TAG, "Added student: ${studentName} (Total: ${studentList.size})")
