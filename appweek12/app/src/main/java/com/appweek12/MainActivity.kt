@@ -4,7 +4,11 @@ import android.graphics.Color
 import android.os.Bundle
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.lifecycleScope
+import androidx.lifecycle.repeatOnLifecycle
 import com.appweek12.databinding.ActivityMainBinding
+import kotlinx.coroutines.launch
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
@@ -27,13 +31,18 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun setupObservers(){
-        viewModel.count.observe(this){
-            count -> binding.textViewCount.text = count.toString()
+        lifecycleScope.launch{
+            // count가 변화할 때 호출됨
+            repeatOnLifecycle(Lifecycle.State.STARTED){
+                viewModel.count.collect{
+                    count -> binding.textViewCount.text = count.toString()
 
-            when{
-                count > 0 -> binding.textViewCount.setTextColor(Color.GREEN)
-                count < 0 -> binding.textViewCount.setTextColor(Color.RED)
-                else -> binding.textViewCount.setTextColor(Color.BLACK)
+                    when{
+                        count > 0 -> binding.textViewCount.setTextColor(Color.GREEN)
+                        count < 0 -> binding.textViewCount.setTextColor(Color.RED)
+                        else -> binding.textViewCount.setTextColor(Color.BLACK)
+                    }
+                }
             }
         }
     }
